@@ -1,11 +1,16 @@
+import { useSelector } from "react-redux";
+
 import TodoListItem from "./TodoListItem";
 import NewTodoForm from "./NewTodoForm";
 
-const TodoList = ({ todos = [{ text: 'Hello' }] }) => (
+const TodoList = () => {
+const todos = useSelector(state => state.todos)
+    
+return (
     <div className="list-wrapper">
         <NewTodoForm />
-        {todos.map(todo => <TodoListItem todo={todo} />)}
+        {todos.map(todo => <TodoListItem key={todo} todo={todo} />)}
     </div>
-);
+)};
 
 export default TodoList;

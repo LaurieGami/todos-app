@@ -1,7 +1,21 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+
+import { createTodo } from "./todosSlice";
 
 const NewTodoForm = () => {
     const [inputValue, setInputValue] = useState("");
+
+    const dispatch = useDispatch();
+
+    const onCreateTodo = () => {
+        if (inputValue !== "") {
+            dispatch(createTodo({
+                text: inputValue,
+            }));
+            setInputValue("");
+        };
+    }
     
     return (
         <div className="new-todo-form">
@@ -12,7 +26,11 @@ const NewTodoForm = () => {
                 value={inputValue}
                 onChange={e => setInputValue(e.target.value)}
             />
-            <button className="new-todo-button">Create Todo</button>
+            <button
+                className="new-todo-button"
+                onClick={onCreateTodo}
+            >
+                Create Todo</button>
         </div>
     );
 };
