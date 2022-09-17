@@ -10,9 +10,7 @@ const NewTodoForm = () => {
 
     const onCreateTodo = () => {
         if (inputValue !== "") {
-            dispatch(createTodo({
-                text: inputValue,
-            }));
+            dispatch(createTodo(inputValue));
             setInputValue("");
         };
     }

@@ -4,13 +4,14 @@ import TodoListItem from "./TodoListItem";
 import NewTodoForm from "./NewTodoForm";
 
 const TodoList = () => {
-const todos = useSelector(state => state.todos)
+    const todos = useSelector(state => state.todos)
     
-return (
-    <div className="list-wrapper">
-        <NewTodoForm />
-        {todos.map(todo => <TodoListItem key={todo} todo={todo} />)}
-    </div>
-)};
+    return (
+        <div className="list-wrapper">
+            <NewTodoForm />
+            {todos.map(todo => <TodoListItem key={todo.text} todo={todo} />)}
+        </div>
+    )
+};
 
 export default TodoList;
